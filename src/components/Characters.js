@@ -1,6 +1,5 @@
-// Write your Character component here
-import React from "react";
-
+import React, {useState} from "react";
+import Character from "./Character";
 // const dummyData = [
 //     {
 //       birth_year: "19BBY",
@@ -221,31 +220,18 @@ import React from "react";
 //   ]
 
 
-const Character = (props) => {
+const Characters = (props) => {
+    const [openData, setOpenData] = useState(false)
     return (
-        <div className="Character-wrapper">
-            <div>
-                <h3>{props.list.birth_year}</h3>
-                <h3>{props.list.created}</h3>
-                <h3>{props.list.edited}</h3>
-                <h3>{props.list.eye_color}</h3>
-                <h3>{props.list.films}</h3>
-                <h3>{props.list.gender}</h3>
-                <h3>{props.list.hair_color}</h3>
-                <h3>{props.list.height}</h3>
-                <h3>{props.list.homeworld}</h3>
-                <h3>{props.list.mass}</h3>
-                <h3>{props.list.skin_color}</h3>
-                <h3>{props.list.species}</h3>
-                <h3>{props.list.starships}</h3>
-                <h3>{props.list.url}</h3>
-                <h3>{props.list.vehicles}</h3>
-            </div>         
+        <div>    
+            <div className="Character-wrapper">
+                {props.list.name}  
+                <button onClick={() => setOpenData(!openData)}>+</button>     
+            </div> 
+            {openData && <Character list={props.list} /> }
         </div>
+    
     )
 }
 
-export default Character;
-
-
-
+export default Characters;
